@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Panadería La Lela Chicha</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Panadería La Lela Chicha: pan del día, facturas, alfajores, tartas, tortas y mucho más.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee&family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Lobster&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,800&display=swap">
+<style>
+/* Layout: logo oficial + foto → productos en grilla → banda parallax (lugar del video) → local → contacto */
+:root{
+  --amarillo:#FDD54A;      /* círculo del logo */
+  --amarillo-claro:#FFE36B;
+  --naranja:#EE7A35;       /* letras del logo */
+  --chocolate:#2A160C;     /* contorno del cartel */
+  --bg:#FBF6EC;
+  --surface:#FFFFFF;
+  --fg:#2A160C;
+  --muted:#6E5644;
+  --line:#EFE3CC;
+  --on-dark:#FFF6DA;
+  --font-display:"Bungee","Arial Black",Impact,sans-serif;
+  --font-script:"Lobster","Brush Script MT",cursive;
+  --font-head:"Fraunces",Georgia,"Times New Roman",serif;
+  --kraft:#A0622D;
+  --font-body:"Nunito Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --crema:#FFFAEE;
+  --amarillo-suave:#FFF3C4;
+  color-scheme:light;  /* diseño claro a propósito: igual con tema claro u oscuro */
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:115%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:1rem;line-height:1.65}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:#FFFFFF}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--naranja);outline-offset:3px}
+.wrap{max-width:1160px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{text-wrap:balance;margin:0}
+
+/* ---------- Logo (recreado del cartel) ---------- */
+.logo{display:inline-flex;flex-direction:column;align-items:center;line-height:1;text-decoration:none}
+.logo .pan{font-family:var(--font-display);letter-spacing:.06em;
+  background:linear-gradient(180deg,#FFF39A 0%,#FFE14A 45%,#F2B705 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+  -webkit-text-stroke:.06em var(--chocolate);paint-order:stroke fill}
+.logo .lela{font-family:var(--font-script);color:#FFE24D;margin-top:-.05em;
+  -webkit-text-stroke:.07em var(--chocolate);paint-order:stroke fill;text-shadow:0 .05em 0 var(--chocolate)}
+.logo-sm .pan{font-size:.95rem}
+.logo-sm .lela{font-size:1.7rem}
+.logo-lg .pan{font-size:clamp(1.9rem,6vw,3.6rem)}
+.logo-lg .lela{font-size:clamp(3.2rem,11vw,6.6rem);transform:rotate(-4deg)}
+
+/* ---------- Header ---------- */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(255,255,255,.96);color:var(--chocolate);border-bottom:4px solid var(--amarillo);box-shadow:0 2px 12px rgba(42,22,12,.08)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:8px}
+nav ul{list-style:none;margin:0;padding:0;display:flex;gap:22px;font-weight:700;font-size:.95rem}
+nav a{text-decoration:none;color:var(--chocolate)}
+nav a:hover{color:var(--naranja)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;font-weight:800;text-decoration:none;border:0;cursor:pointer;font-size:1rem}
+.btn-wa{background:#25D366;color:#0B2E18}
+.btn-ghost{background:transparent;color:var(--on-dark);box-shadow:inset 0 0 0 2px var(--amarillo)}
+.btn-wa svg{width:20px;height:20px}
+.top .btn{padding:9px 16px;font-size:.9rem}
+@media (max-width:820px){nav{display:none}}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;background:linear-gradient(170deg,#FFFDF8 0%,#FBF3E1 100%);overflow:hidden;color:var(--chocolate)}
+.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center;padding-block:56px 64px}
+.logo-of{width:min(360px,78vw);height:auto;filter:drop-shadow(0 10px 18px rgba(90,55,20,.15))}
+.hero-copy{min-width:0;text-align:center;display:flex;flex-direction:column;align-items:center;gap:22px}
+.hero .tag{font-family:var(--font-display);font-size:clamp(1.05rem,2.4vw,1.4rem);color:var(--naranja);letter-spacing:.04em;line-height:1.3}
+.hero .tag span{color:var(--chocolate)}
+.hero p.lead{margin:0;max-width:44ch;font-size:1.08rem;font-weight:600}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.hero .btn-ghost{color:var(--chocolate);box-shadow:inset 0 0 0 2px var(--chocolate)}
+.hero-photo{position:relative;min-width:0}
+.hero-photo img{border-radius:18px;border:6px solid #FFFFFF;aspect-ratio:5/6;object-fit:cover;object-position:50% 50%;width:100%;max-height:560px;transform:rotate(1.5deg);box-shadow:0 18px 40px rgba(42,22,12,.18)}
+.sticker{position:absolute;left:-14px;bottom:-16px;background:var(--naranja);color:#FFFFFF;font-family:var(--font-script);font-size:1.5rem;padding:10px 18px;border-radius:12px;transform:rotate(-5deg)}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr;padding-block:40px 52px}.sticker{left:8px}}
+
+/* ---------- Secciones ---------- */
+section{padding-block:72px}
+.sec-head{display:flex;flex-direction:column;gap:6px;margin-bottom:32px}
+.eyebrow{font-weight:800;text-transform:uppercase;letter-spacing:.18em;font-size:.82rem;color:var(--kraft);display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:28px;height:2px;background:var(--kraft)}
+.sec-head h2{font-family:var(--font-head);font-weight:700;font-size:clamp(2rem,4.6vw,2.9rem);line-height:1.12;letter-spacing:-.01em}
+.sec-head p{margin:0;color:var(--muted);max-width:62ch}
+
+/* La marca de agua está grabada en cada foto (img/), no en CSS */
+
+/* Banda parallax (acá va el video cuando llegue) */
+.banda{position:relative;min-height:340px;display:grid;place-items:center;text-align:center;color:#FFFFFF;background:url("img/pan-frances.jpg") center/cover fixed;overflow:hidden}
+.banda video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.banda::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(42,22,12,.35),rgba(42,22,12,.6))}
+.banda .wrap{position:relative}
+.banda h2{font-family:var(--font-head);font-size:clamp(2rem,5vw,3.2rem);line-height:1.1}
+.banda p{margin:10px 0 0;font-size:1.15rem;font-weight:600}
+@media (max-width:820px){.banda{background-attachment:scroll}}
+
+/* Inicio: solo el video */
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.hero .wrap{grid-template-columns:1fr!important;justify-items:center;padding-block:40px 48px!important}
+.hero-video .video-frame{transform:none!important;width:min(420px,88vw)}
+
+/* Video del local */
+.video-sec{background:linear-gradient(170deg,#FFFDF8 0%,#FBF3E1 100%)}
+.video-sec .wrap{display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center}
+.video-copy{min-width:0}
+.video-copy .sec-head{margin-bottom:18px}
+.video-copy ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;font-weight:600}
+.video-copy li::before{content:"\2022";color:var(--naranja);font-weight:800;margin-right:10px}
+.video-frame{position:relative;width:min(340px,82vw);aspect-ratio:2/3;border-radius:24px;overflow:hidden;border:6px solid #FFFFFF;box-shadow:0 18px 40px rgba(42,22,12,.18);transform:rotate(-1.5deg);background:var(--amarillo)}
+.video-frame video{width:100%;height:100%;object-fit:cover;display:block}
+.video-sound{position:absolute;right:12px;bottom:12px;width:44px;height:44px;border-radius:50%;border:0;cursor:pointer;background:rgba(42,22,12,.75);color:#FFFFFF;display:grid;place-items:center}
+.video-sound svg{width:22px;height:22px}
+.hero-video{display:flex;justify-content:center}
+.hero-video .video-frame{transform:rotate(1.5deg)}
+@media (max-width:860px){.hero-video .sticker{left:auto;right:calc(50% + 60px)}}
+
+/* Especiales */
+.especiales{background:var(--crema)}
+.esp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px}
+.esp{background:var(--surface);border-radius:20px;padding:26px 24px;box-shadow:0 6px 22px rgba(90,55,20,.08);display:flex;flex-direction:column;gap:10px;border-top:5px solid var(--amarillo);min-width:0}
+.esp-ico{width:52px;height:52px;border-radius:50%;background:var(--amarillo-suave);color:var(--naranja);display:grid;place-items:center}
+.esp-ico svg{width:28px;height:28px}
+.esp h3{font-family:var(--font-head);font-size:1.35rem}
+.esp p{margin:0;color:var(--muted)}
+.artesanal{margin:28px 0 0;text-align:center;font-size:1.1rem;color:var(--chocolate)}
+.artesanal strong{color:var(--naranja)}
+
+/* Productos */
+.card .frase{margin-top:auto!important;padding-top:12px;font-family:var(--font-head);font-style:italic;font-weight:500;font-size:1.05rem!important;color:var(--naranja)!important}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:22px}
+.card{background:var(--surface);border:0;border-radius:20px;box-shadow:0 6px 22px rgba(90,55,20,.08);overflow:hidden;display:flex;flex-direction:column;transition:transform .2s ease,box-shadow .2s ease}
+.card:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(42,22,12,.14)}
+.card{position:relative}
+.card img{aspect-ratio:1/1;object-fit:cover;width:100%}
+.card .body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:4px;flex:1}
+.card h3{font-family:var(--font-head);font-size:1.25rem;font-weight:700}
+.card p{margin:0;color:var(--muted);font-size:1rem}
+.card .price{margin-top:auto;padding-top:10px;display:flex;align-items:baseline;gap:6px;font-variant-numeric:tabular-nums}
+.card .price b{font-family:var(--font-display);font-weight:400;font-size:1.25rem;color:var(--naranja)}
+.card .price small{color:var(--muted);font-size:.82rem}
+.card .price.ask b{font-family:var(--font-body);font-weight:800;font-size:1rem;color:var(--muted)}
+
+/* Pizarra de precios */
+.precios{background:var(--crema);color:var(--chocolate)}
+.precios .sec-head p{color:var(--muted)}
+.boards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px}
+.board{background:#FFFFFF;border:2px solid var(--amarillo);color:var(--chocolate);border-radius:6px;padding:26px 24px 20px;box-shadow:0 10px 24px rgba(42,22,12,.10);position:relative;min-width:0}
+.board:nth-child(1){transform:rotate(-.6deg)}
+.board:nth-child(2){transform:rotate(.5deg)}
+.board::before{content:"";position:absolute;top:-10px;left:50%;width:90px;height:22px;transform:translateX(-50%) rotate(-2deg);background:rgba(246,196,26,.45)}
+.board h3{font-family:var(--font-head);font-weight:700;font-size:1.35rem;margin-bottom:12px;color:var(--chocolate)}
+.board ul{list-style:none;margin:0;padding:0}
+.board li{display:flex;align-items:baseline;gap:8px;padding:6px 0;font-size:1.05rem;font-weight:600;font-variant-numeric:tabular-nums}
+.board li .dots{flex:1;border-bottom:2px dotted rgba(42,22,12,.35);transform:translateY(-4px);min-width:16px}
+.board li .p{font-weight:800;white-space:nowrap}
+.board li .p small{font-weight:600;font-size:.78rem;opacity:.75}
+.board .firma{font-family:var(--font-script);font-size:1.3rem;text-align:right;margin-top:10px}
+.vigencia{margin-top:22px;font-size:.95rem;color:var(--muted)}
+
+/* Local */
+.local-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.local-grid figure{margin:0;border-radius:16px;overflow:hidden;position:relative}
+.local-grid figure img{width:100%;height:100%;object-fit:cover}
+.local-grid figure{background:var(--surface);box-shadow:0 6px 22px rgba(90,55,20,.08)}
+.local-grid figcaption{padding:14px 18px 16px;display:flex;flex-direction:column;gap:4px}
+.local-grid figcaption strong{font-family:var(--font-head);font-size:1.15rem}
+.local-grid figcaption span{color:var(--muted);font-size:.95rem;line-height:1.5}
+.local-grid .tall{grid-row:auto}
+.local-grid .wide{grid-column:1/-1}
+.local-grid figure img{height:auto;aspect-ratio:auto;object-fit:contain;display:block}
+@media (max-width:760px){.local-grid{grid-template-columns:1fr}.local-grid .tall{grid-row:auto}}
+
+/* Contacto */
+.contacto{background:var(--crema);color:var(--chocolate)}
+.contacto .eyebrow{color:var(--chocolate)}
+.contacto .sec-head p{color:var(--chocolate)}
+.info{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.info div{background:#FFFFFF;border-radius:20px;padding:22px;border:0;box-shadow:0 6px 22px rgba(90,55,20,.08);min-width:0}
+.info h3{font-family:var(--font-head);font-weight:700;font-size:1.15rem;margin-bottom:6px}
+.info p{margin:0;font-weight:600;overflow-wrap:anywhere}
+.ph{background:repeating-linear-gradient(-45deg,rgba(226,115,31,.18) 0 6px,transparent 6px 12px);border-radius:4px;padding:0 4px}
+
+.maplink{margin-top:10px!important}
+.maplink a{color:var(--kraft);font-weight:800}
+.mapa{margin-top:22px;border-radius:20px;overflow:hidden;background:#FFFFFF;box-shadow:0 6px 22px rgba(90,55,20,.08);display:grid;grid-template-columns:1.6fr 1fr}
+.mapa iframe{width:100%;height:100%;min-height:320px;border:0;display:block;background:var(--crema)}
+.mapa-card{padding:28px;display:flex;flex-direction:column;justify-content:center;gap:8px;min-width:0}
+.mapa-card h3{font-family:var(--font-head);font-size:1.4rem}
+.mapa-card p{margin:0;color:var(--muted)}
+.btn-map{background:var(--chocolate);color:#FFFFFF;align-self:flex-start;margin-top:8px}
+.mapa:not(:has(iframe)){grid-template-columns:1fr}
+@media (max-width:760px){.mapa{grid-template-columns:1fr}}
+.wa-float{position:fixed;right:calc(18px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:30;display:flex;flex-direction:column;align-items:flex-end;gap:12px}
+.wa-dot{width:62px;height:62px;border-radius:50%;border:0;cursor:pointer;background:#25D366;color:#FFFFFF;display:grid;place-items:center;box-shadow:0 8px 22px rgba(0,0,0,.25);animation:wa-pulse 2.4s ease-in-out infinite;transition:transform .15s}
+.wa-dot svg{width:34px;height:34px}
+.wa-dot:hover{transform:scale(1.06)}
+@keyframes wa-pulse{0%,100%{box-shadow:0 8px 22px rgba(0,0,0,.25),0 0 0 0 rgba(37,211,102,.5)}50%{box-shadow:0 8px 22px rgba(0,0,0,.25),0 0 0 12px rgba(37,211,102,0)}}
+.wa-panel{width:min(300px,calc(100vw - 36px));background:#FFFFFF;border-radius:18px;overflow:hidden;box-shadow:0 14px 40px rgba(42,22,12,.25);animation:wa-in .2s ease-out}
+@keyframes wa-in{from{opacity:.4;transform:translateY(8px)}to{opacity:1;transform:none}}
+.wa-head{background:#128C4A;color:#FFFFFF;font-weight:800;padding:12px 16px;display:flex;justify-content:space-between;align-items:center}
+.wa-close{background:none;border:0;color:#FFFFFF;font-size:1.5rem;line-height:1;cursor:pointer;padding:0 4px}
+.wa-body{background:#EFE7DC;padding:16px;display:flex;flex-direction:column;gap:12px}
+.wa-bubble{margin:0;background:#FFFFFF;color:var(--chocolate);padding:10px 14px;border-radius:4px 14px 14px 14px;font-size:.95rem;line-height:1.4;box-shadow:0 1px 2px rgba(0,0,0,.1)}
+.wa-go{display:flex;align-items:center;justify-content:center;gap:8px;background:#25D366;color:#0B2E18;font-weight:800;text-decoration:none;padding:12px 14px;border-radius:999px}
+.wa-go svg{width:20px;height:20px}
+.wa-body small{text-align:center;color:var(--muted);font-weight:700;font-variant-numeric:tabular-nums}
+@media (max-width:520px){.wa-dot{width:56px;height:56px}}
+.brand{font-family:var(--font-head);font-weight:700;font-size:1.35rem;color:var(--chocolate);text-decoration:none}
+footer .wrap{justify-content:center!important}
+footer{background:#FFFFFF;color:var(--chocolate);border-top:4px solid var(--amarillo)}
+footer .wrap{padding-bottom:110px!important;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding-block:28px}
+footer small{color:var(--muted)}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a href="#inicio" class="brand">La Lela Chicha</a>
+    <nav aria-label="Principal">
+      <ul>
+        <li><a href="#productos">Productos</a></li>
+        <li><a href="#especiales">Especiales</a></li>
+        <li><a href="#local">El local</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="hero" style="padding-block:0">
+    <div class="wrap">
+      <h1 class="sr-only">Panadería La Lela Chicha</h1>
+      <div class="hero-photo hero-video">
+        <div class="video-frame">
+          <video id="lela-video" src="img/video.mp4" poster="img/video-poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="Video del local: canasta de bizcochos frente al logo de La Lela Chicha"></video>
+          <button type="button" class="video-sound" id="video-sound" aria-label="Activar sonido" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5Z"/><path id="snd-wave" d="m23 9-6 6M17 9l6 6"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="productos">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Nuestra vitrina</span>
+        <h2>Lo que vas a encontrar</h2>
+        <p>Algunos de los productos que tenemos todos los días. Preguntanos por tortas y pedidos especiales.</p>
+      </div>
+      <div class="grid">
+        <article class="card"><img src="img/alfajores-glaseados.jpg" alt="Alfajores bañados en chocolate negro y blanco" loading="lazy">
+          <div class="body"><h3>Alfajores glaseados</h3><p>Bañados en chocolate, con dulce de leche.</p><p class="frase">¡Endulzá tu día con uno de estos!</p></div></article>
+        <article class="card"><img src="img/alfajores-coco.jpg" alt="Alfajores de maicena con coco rallado" loading="lazy">
+          <div class="body"><h3>Alfajores de maicena</h3><p>Con coco rallado. Grandes o chicos.</p><p class="frase">Clásicos de siempre, como los de la abuela.</p></div></article>
+        <article class="card"><img src="img/tarta-manzana.jpg" alt="Tarta de manzana con cereza" loading="lazy">
+          <div class="body"><h3>Tartas</h3><p>Manzana, coco, cereza y pasta frola.</p><p class="frase">Ideal para compartir en familia.</p></div></article>
+        <article class="card"><img src="img/lemon-pie.jpg" alt="Mini lemon pies con merengue" loading="lazy">
+          <div class="body"><h3>Mini lemon pie</h3><p>Con merengue italiano gratinado.</p><p class="frase">Un bocado cítrico que enamora.</p></div></article>
+        <article class="card"><img src="img/tarta-chocolate.jpg" alt="Tarta de chocolate con granas de colores" loading="lazy" style="object-position:50% 100%">
+          <div class="body"><h3>Tarta de chocolate</h3><p>Con ganache y granas de colores.</p><p class="frase">Para los fanáticos del chocolate.</p></div></article>
+        <article class="card"><img src="img/scones.jpg" alt="Scones dorados" loading="lazy">
+          <div class="body"><h3>Scones</h3><p>Esponjosos, ideales para la merienda.</p><p class="frase">El compañero perfecto del mate.</p></div></article>
+        <article class="card"><img src="img/facturas-hojaldre.jpg" alt="Facturas de hojaldre con glaseado y chocolate" loading="lazy">
+          <div class="body"><h3>Facturas de hojaldre</h3><p>Cañones, palmeras, arrolladitos y conitos.</p><p class="frase">Crocantes y recién horneadas.</p></div></article>
+        <article class="card"><img src="img/medialunas.jpg" alt="Medialunas con azúcar impalpable" loading="lazy">
+          <div class="body"><h3>Medialunas</h3><p>Doraditas, de manteca.</p><p class="frase">El desayuno argentino por excelencia.</p></div></article>
+        <article class="card"><img src="img/donas.jpg" alt="Rosquitas fritas con azúcar" loading="lazy">
+          <div class="body"><h3>Rosquitas azucaradas</h3><p>Fritas y pasadas por azúcar.</p><p class="frase">Un antojo dulce para la merienda.</p></div></article>
+        <article class="card"><img src="img/chipa.jpg" alt="Canasta de chipa recién horneado" loading="lazy">
+          <div class="body"><h3>Chipa</h3><p>Calentito y bien quesoso.</p><p class="frase">Calentito, ¡no dura nada!</p></div></article>
+        <article class="card"><img src="img/bolsa-surtida.jpg" alt="Bolsa de masas y galletitas surtidas" loading="lazy">
+          <div class="body"><h3>Masas surtidas</h3><p>Galletitas, pepas y masitas en bolsa.</p><p class="frase">Un poquito de todo para darte el gusto.</p></div></article>
+        <article class="card"><img src="img/pan-frances.jpg" alt="Panes franceses recién horneados" loading="lazy">
+          <div class="body"><h3>Pan francés</h3><p>Crocante por fuera, tierno por dentro.</p><p class="frase">Recién salido del horno, todas las mañanas.</p></div></article>
+        <article class="card"><img src="img/pan-campo.jpg" alt="Panes de campo con corte rombo" loading="lazy">
+          <div class="body"><h3>Pan de campo</h3><p>Corteza crocante y miga bien esponjosa.</p><p class="frase">Rústico y casero, como tiene que ser.</p></div></article>
+        <article class="card"><img src="img/pan-mesa.jpg" alt="Pancitos de mesa dorados" loading="lazy">
+          <div class="body"><h3>Pan de mesa</h3><p>Pancitos tiernos para acompañar cada comida.</p><p class="frase">Infaltables en la mesa familiar.</p></div></article>
+        <article class="card"><img src="img/pan-lactal.jpg" alt="Panes lactales recién horneados" loading="lazy">
+          <div class="body"><h3>Pan lactal</h3><p>Suave y esponjoso, ideal para tostadas y sándwiches.</p><p class="frase">Tus tostadas nunca fueron tan ricas.</p></div></article>
+        <article class="card"><img src="img/pan-integral.jpg" alt="Panes integrales con semillas" loading="lazy">
+          <div class="body"><h3>Pan integral con semillas</h3><p>Con girasol, sésamo y lino.</p><p class="frase">Rico y nutritivo, para cuidarte con sabor.</p></div></article>
+        <article class="card"><img src="img/grasantitos.jpg" alt="Canasta de saborizados de hojaldre" loading="lazy">
+          <div class="body"><h3>Saborizados</h3><p>Hojaldrados y crocantes, con trocitos bien sabrosos.</p><p class="frase">Imposible comer uno solo.</p></div></article>
+        <article class="card"><img src="img/bizcochos-grasa.jpg" alt="Canasta de bizcochitos de grasa" loading="lazy">
+          <div class="body"><h3>Bizcochitos de grasa</h3><p>Los de siempre, livianos y dorados.</p><p class="frase">El mate sin bizcochitos no es lo mismo.</p></div></article>
+        <article class="card"><img src="img/palitos.jpg" alt="Canasta de grisines italianos con hierbas" loading="lazy">
+          <div class="body"><h3>Grisines italianos</h3><p>En todas sus variedades: con hierbas, especias y más.</p><p class="frase">El acompañante ideal de tu picada.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section id="especiales" class="especiales">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Para ocasiones especiales</span>
+        <h2>Sorprendé a quien más querés</h2>
+        <p>Además de lo de todos los días, preparamos encargos especiales. Todo artesanal, hecho en nuestro local.</p>
+      </div>
+      <div class="esp-grid">
+        <article class="esp"><span class="esp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9Z"/><path d="M17 11h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 3c0 1.5 1 1.5 1 3M12 3c0 1.5 1 1.5 1 3"/></svg></span><h3>Desayunos sorpresa</h3><p>Armamos desayunos y meriendas para regalar en cumpleaños, aniversarios o simplemente para decir te quiero.</p></article>
+        <article class="esp"><span class="esp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V13a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8"/><path d="M4 16c1.5 1 3 1 4.5 0s3-1 4.5 0 3 1 4.5 0 2.5-1 2.5-1"/><path d="M2 21h20M12 11V7M12 7c-1 0-1.5-1-1.5-1.8C10.5 4 12 3 12 3s1.5 1 1.5 2.2c0 .8-.5 1.8-1.5 1.8Z"/></svg></span><h3>Tortas personalizadas</h3><p>Diseñamos tu torta a gusto: sabor, relleno, decoración y tamaño para tu cumpleaños o evento.</p></article>
+        <article class="esp"><span class="esp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg></span><h3>Sorteos en fechas especiales</h3><p>Día de la Madre, de la Mujer, del Padre, el aniversario de Caleta Olivia y muchas sorpresas más. ¡Estate atento!</p></article>
+      </div>
+      <p class="artesanal"><strong>100% artesanal.</strong> Todos nuestros productos se elaboran en nuestro local, todos los días.</p>
+    </div>
+  </section>
+
+  <section class="banda" aria-label="Hecho a mano">
+    <div class="wrap">
+      <h2>Hecho a mano, todos los días</h2>
+      <p>Todo lo que vendemos lo elaboramos en nuestro local, de forma artesanal.</p>
+    </div>
+  </section>
+
+  <section id="local">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">El local</span>
+        <h2>Vení a visitarnos</h2>
+        <p>Pasá a elegir lo que más te guste, todo recién hecho.</p>
+      </div>
+      <div class="local-grid">
+        <figure class="wide"><img src="img/estanteria.jpg" alt="Estantería con pan de campo, fritzitos, cremonas, bizcochos y grasantitos con sus precios" loading="lazy"><figcaption><strong>Panes y bizcochos del día</strong><span>Chips · Pan de campo · Fritzitos · Cremonas · Bizcochos · Pan de salvado · Saborizados · Cuernitos · Pre-pizza · Grasantitos</span></figcaption></figure>
+        <figure><img src="img/vitrina.jpg" alt="Vitrina con facturas y medialunas" loading="lazy"><figcaption><strong>Facturas y medialunas</strong><span>Rosquitas azucaradas · Facturas con chocolate y dulce · Cañones · Medialunas</span></figcaption></figure>
+        <figure><img src="img/vitrina-2.jpg" alt="Vitrina con sándwiches de miga, tartitas, alfajores, scones y prepizzas" loading="lazy"><figcaption><strong>Sándwiches, tartitas y alfajores</strong><span>Sándwiches de miga · Tartitas · Scones · Alfajores de chocolate · Alfajores de maicena · Arrolladitos · Pre-pizzas</span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" class="contacto">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Contacto</span>
+        <h2>Pedidos y consultas</h2>
+        <p>Encargá tu desayuno sorpresa, tortas personalizadas y bandejas para cumpleaños y reuniones.</p>
+      </div>
+      <div class="info">
+        <div><h3>Horarios</h3><p>Lunes a sábado: <span class="ph">[00:00 a 00:00]</span><br>Domingos: <span class="ph">[00:00 a 00:00]</span></p></div>
+        <div><h3>TikTok</h3><p><a href="https://www.tiktok.com/@[usuario]" target="_blank" rel="noopener">Seguinos en TikTok</a> <span class="ph">[falta el link]</span></p></div>
+      </div>
+      <div class="mapa">
+        <iframe title="Mapa: Francia 2054, Caleta Olivia" src="https://maps.google.com/maps?q=Francia%202054%2C%20Caleta%20Olivia%2C%20Santa%20Cruz%2C%20Argentina&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="mapa-card"><h3>Francia 2054</h3><p>Caleta Olivia, Santa Cruz (Z9011)</p><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Francia+2054,+Caleta+Olivia,+Santa+Cruz" target="_blank" rel="noopener">Cómo llegar</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+<div class="wa-float">
+  <div class="wa-panel" id="wa-panel" hidden>
+    <div class="wa-head"><span>La Lela Chicha</span><button type="button" class="wa-close" id="wa-close" aria-label="Cerrar">×</button></div>
+    <div class="wa-body">
+      <p class="wa-bubble">¡Hola! ¿Qué se te antojó hoy? Contanos y te lo dejamos listo para que pases a buscarlo.</p>
+      <a class="wa-go" href="https://wa.me/5492974055963?text=%C2%A1Hola%20Lela%20Chicha!%20Se%20me%20antoj%C3%B3%20algo%20rico%2C%20quiero%20pedir%3A%20" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2l-.5-.3Z"/></svg>¡Pedilo ya!</a>
+      <small>WhatsApp 297 405-5963</small>
+    </div>
+  </div>
+  <button type="button" class="wa-dot" id="wa-btn" aria-label="Pedir por WhatsApp" aria-expanded="false" aria-controls="wa-panel"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2l-.5-.3Z"/></svg></button>
+</div>
+<script>
+(function(){var b=document.getElementById('wa-btn'),p=document.getElementById('wa-panel'),c=document.getElementById('wa-close');
+function set(o){p.hidden=!o;b.setAttribute('aria-expanded',o)}
+b.addEventListener('click',function(){set(p.hidden)});c.addEventListener('click',function(){set(false)});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false)});})();
+(function(){var v=document.getElementById('lela-video'),s=document.getElementById('video-sound'),w=document.getElementById('snd-wave');if(!v||!s)return;
+s.addEventListener('click',function(){v.muted=!v.muted;if(!v.muted){v.play().catch(function(){})}s.setAttribute('aria-pressed',!v.muted);s.setAttribute('aria-label',v.muted?'Activar sonido':'Silenciar');w.setAttribute('d',v.muted?'m23 9-6 6M17 9l6 6':'M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14')});})();
+</script>
+<footer>
+  <div class="wrap">
+    <small>© 2026 Panadería La Lela Chicha</small>
+  </div>
+</footer>
+</body>
+</html>
